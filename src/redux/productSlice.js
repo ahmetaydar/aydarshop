@@ -14,6 +14,17 @@ export const getProducts = createAsyncThunk("getproducts", async () => {
   return data;
 });
 
+export const getCategoryProducts = createAsyncThunk(
+  "getcategoryproducts",
+  async (category) => {
+    const response = await fetch(
+      `https://fakestoreapi.com/products/category/${category}`
+    );
+    const data = await response.json();
+    return data;
+  }
+);
+
 export const getDetailProduct = createAsyncThunk(
   "getdetailproducts",
   async (id) => {
@@ -48,6 +59,16 @@ const productSlice = createSlice({
       })
       .addCase(getDetailProduct.rejected, (state, action) => {
         state.productDetailStatus = STATUS.FAIL;
+      })
+      .addCase(getCategoryProducts.pending, (state, action) => {
+        state.productsStatus = STATUS.LOADING;
+      })
+      .addCase(getCategoryProducts.fulfilled, (state, action) => {
+        state.productsStatus = STATUS.SUCCESS;
+        state.products = action.payload;
+      })
+      .addCase(getCategoryProducts.rejected, (state, action) => {
+        state.productsStatus = STATUS.FAIL;
       });
   },
 });

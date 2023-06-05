@@ -15,7 +15,6 @@ const Detail = () => {
     dispatch(getDetailProduct(id));
   }, [dispatch, id]);
 
-  console.log(productDetail);
   return (
     <div>
       {productDetailStatus == "LOADING" ? (

@@ -21,6 +21,13 @@ const Cart = () => {
           {carts?.map((cart, i) => (
             <CartComp key={i} cart={cart} />
           ))}
+          <div className="flex items-center justify-end text-2xl">
+            TOPLAM TUTAR :{" "}
+            <span className="font-bold texl-3xl ml-2">
+              {" "}
+              {totalAmount.toFixed(2)} TL
+            </span>
+          </div>
         </div>
       ) : (
         <div>Kartiniz Boş </div>

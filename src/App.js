@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Home from "./pages/Home";
 import Detail from "./pages/Detail";
+import Search from "./pages/Search";
 import Cart from "./pages/Cart";
 import Navbar from "./components/navbar/Navbar";
 import PageContainer from "./containers/PageContainer";
@@ -17,6 +18,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/products/:id" element={<Detail />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/products/:search" element={<Search />} />
           </Routes>
         </Router>
       </PageContainer>
